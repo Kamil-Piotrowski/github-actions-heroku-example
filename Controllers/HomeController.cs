@@ -21,7 +21,10 @@ namespace docker_heroku_demo.Controllers
         public IActionResult Index()
         {
             ViewBag.connectionString = new ConfigurationService().DatabaseConnectionString;
-            return View();
+            BloggingContext ctx = new BloggingContext();
+            ctx.Blogs.Add(new Blog());
+            ctx.SaveChanges();
+            return View(ctx.Blogs.ToList());
         }
 
         public IActionResult Privacy()
