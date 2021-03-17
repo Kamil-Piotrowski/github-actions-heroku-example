@@ -20,6 +20,7 @@ namespace docker_heroku_demo.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.connectionString = new ConfigurationService().DatabaseConnectionString;
             return View();
         }
 
